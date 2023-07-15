@@ -97,7 +97,7 @@ function App (){
                 <img 
                 name="imageUrl" 
                 className='image' 
-                width="400px" 
+                width="500px" 
                 src={currentMeme.imageUrl}> 
                 </img>
 
