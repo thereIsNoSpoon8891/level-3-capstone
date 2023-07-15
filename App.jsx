@@ -10,7 +10,9 @@ function App (){
         topText: "",
         bottomText: "",
         imageUrl: "https://i.imgflip.com/33e92f.jpg",// initial image
-        id: idGen()
+        id: idGen(),
+       
+
     })
     
     const [savedMemes, setSavedMemes] = useState([])
@@ -51,12 +53,37 @@ function App (){
             id: idGen(),
         }]))
     }
+    function handleDelete(id){
+        const UpdateMemes =savedMemes.filter((meme) => meme.id !==id);
+        setSavedMemes(UpdateMemes);
+
+    }
+
+    // im creating a new state to  handle the  edits, 
+    const [editedTopText, setEditedTopText] = useState("");
+const [editedBottomText, setEditedBottomText] = useState("");
+
+function handleEditTopText(e) {
+    setEditedTopText(e.target.value);
+  }
+  
+  function handleEditBottomText(e) {
+    setEditedBottomText(e.target.value);
+  }
+  
+
+
     const savedMemesElements = savedMemes.map(meme => (<SavedMemes 
                                                         topText={meme.topText}
                                                         bottomText={meme.bottomText}
                                                         imageUrl={meme.imageUrl}
                                                         id={meme.id}
                                                         key={meme.id}
+                                                        onDelete={handleDelete}
+                                                        editedTopText={editedTopText} 
+                                                        editedBottomText={editedBottomText}
+                                                        onEditTopText={handleEditTopText} 
+                                                        onEditBottomText={handleEditBottomText}
                                                         />))
     return(
         <>
