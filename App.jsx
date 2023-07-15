@@ -148,4 +148,3 @@ function handleEditTopText(e) {
 
 export default App
 
-console.log(test)
