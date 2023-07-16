@@ -62,7 +62,7 @@ body{
 
 .image-container--top-text{
         position: absolute;
-        top: 0;
+        top: 5%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-family: impact, sans-serif;
@@ -135,7 +135,7 @@ body{
 
 .saved-memes--top-text{
     position:absolute;
-    top:0;
+    top:5%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: impact, sans-serif;
