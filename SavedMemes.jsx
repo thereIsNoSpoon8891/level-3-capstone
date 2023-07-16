@@ -28,13 +28,23 @@ const {
             {editedBottomText ? editedBottomText : bottomText}
             </h2>
 
-            <div className="saved-memes--image-container">
-                <img className="saved-memes--img" width="500px" src={imageUrl} alt="Meme"></img>
+            <div 
+            className="saved-memes--image-container"
+            >
+                <img
+                 className="saved-memes--img" 
+                 width="500px" src={imageUrl} 
+                 alt="Meme"
+                 ></img>
             </div>
 
             <div className="saved-memes--button-container">
 
-                <button className="saved-memes--save-button" id={id} onClick={deleteMeme}>
+                <button 
+                className="saved-memes--save-button" 
+                id={id} 
+                onClick={deleteMeme}
+                >
                     Delete this Meme
                 </button>
 
@@ -42,8 +52,18 @@ const {
                     Edit this Meme
                 </button>
 
-                <input type="text" value={editedTopText} onChange={onEditTopText} />
-                <input type="text" value={editedBottomText} onChange={onEditBottomText} />
+                <input 
+                type="text" 
+                placeholder="Edit Top Text" 
+                value={editedTopText} 
+                onChange={onEditTopText} 
+                />
+                
+                <input 
+                type="text" 
+                placeholder="Edit Bottom Text" 
+                value={editedBottomText} 
+                onChange={onEditBottomText} />
             </div>
         </div>
     )

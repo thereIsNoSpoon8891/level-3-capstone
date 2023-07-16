@@ -70,18 +70,18 @@ function App (){
         setEditedBottomText(e.target.value);
       }
     const savedMemesElements = savedMemes.map(meme => (
-    <SavedMemes 
-    topText={meme.topText}
-    bottomText={meme.bottomText}
-    imageUrl={meme.imageUrl}
-    id={meme.id}
-    key={meme.id}
-    onDelete={handleDelete}
-    editedTopText={editedTopText} 
-    editedBottomText={editedBottomText}
-    onEditTopText={handleEditTopText} 
-    onEditBottomText={handleEditBottomText}
-    />))
+                                                <SavedMemes 
+                                                topText={meme.topText}
+                                                bottomText={meme.bottomText}
+                                                imageUrl={meme.imageUrl}
+                                                id={meme.id}
+                                                key={meme.id}
+                                                onDelete={handleDelete}
+                                                editedTopText={editedTopText} 
+                                                editedBottomText={editedBottomText}
+                                                onEditTopText={handleEditTopText} 
+                                                onEditBottomText={handleEditBottomText}
+                                                />))
     return(
         <>
         <div className='main-container'>
@@ -91,7 +91,10 @@ function App (){
             </h1>
 
             <div>
-                <button className='next-button' onClick={changeMeme}>
+                <button 
+                className='next-button' 
+                onClick={changeMeme}
+                >
                     Next meme image!
                 </button>
             </div>
@@ -112,7 +115,9 @@ function App (){
                     name="bottomText"
                     onChange={handleChange}
                 />
-                <button className='save-button' onClick={saveMeme}>
+                <button 
+                className='save-button' 
+                onClick={saveMeme}>
                     Save meme
                 </button>
 
