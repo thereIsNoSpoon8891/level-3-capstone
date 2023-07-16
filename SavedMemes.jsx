@@ -1,4 +1,5 @@
 
+
 function SavedMemes (props){
 
 
@@ -11,12 +12,18 @@ const {
     editedTopText,
     editedBottomText,
     onEditTopText,
-    onEditBottomText
+    onEditBottomText,
   } = props;
 
     function deleteMeme(){
         onDelete(id);
     }
+
+    function handleEdit(e){
+        e.preventDefault();
+
+    }
+
     return(
         <div className="saved-memes--container">
 
@@ -48,7 +55,10 @@ const {
                     Delete this Meme
                 </button>
 
-                <button className="saved-memes--edit-button">
+                <button 
+                className="saved-memes--edit-button"
+                onClick={handleEdit}
+                >
                     Edit this Meme
                 </button>
 
@@ -58,12 +68,13 @@ const {
                 value={editedTopText} 
                 onChange={onEditTopText} 
                 />
-                
+
                 <input 
                 type="text" 
                 placeholder="Edit Bottom Text" 
                 value={editedBottomText} 
-                onChange={onEditBottomText} />
+                onChange={onEditBottomText} 
+                />
             </div>
         </div>
     )
