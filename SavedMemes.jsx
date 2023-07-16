@@ -9,19 +9,30 @@ console.log(props)
     }
     return(
         <div className="saved-memes--container">
+
             <h2 className="saved-memes--top-text">
                 {topText}
             </h2>
+
             <h2 className="saved-memes--bottom-text">
                 {bottomText}
             </h2>
-            <img className="saved-memes--img" width="400px" src={imageUrl}></img>
-            <button className="saved-memes--save-button" id={id} onClick={x}>
-                delete this Meme
-            </button>
-            <button className="saved-memes--edit-button">
-                Edit this Meme
-            </button>
+
+            <div className="saved-memes--image-container">
+                <img className="saved-memes--img" width="500px" src={imageUrl}></img>
+            </div>
+
+            <div className="saved-memes--button-container">
+                
+                <button className="saved-memes--save-button" id={id} >
+                    Delete this Meme
+                </button>
+
+                <button className="saved-memes--edit-button">
+                    Edit this Meme
+                </button>
+
+            </div>
         </div>
     )
 }
