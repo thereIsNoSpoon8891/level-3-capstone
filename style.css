@@ -1,19 +1,28 @@
 
 body{
-    background-color: rgb(137, 180, 219);
+    background-color: rgb(167, 199, 228);
 }
 
 .title{
     background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
     border-radius: 10px;
     font-size: 50px;
+    color: azure;
     padding: 10px;
+
 }
 
 .main-container{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .next-button{
@@ -26,18 +35,36 @@ body{
     height: 40px;
     width: 100%;
     font-size: 20px;
+    margin: 5px;
+}
+
+.form--input{
+    font-family: sans-serif;
+    border-radius: 5px;
+    border: 1px solid #D5D4D8;
+    text-indent: 5px;
+    height: 30px;
+   
+}
+
+.save-button{
+    font-family: sans-serif;
+    border-radius: 5px;
+    background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    margin: 5px;
 }
 
 .image-container--top-text{
- 
-        position: relative;
-        top: 30%;
-        width: 80%;
-        text-align: center;
+        position: absolute;
+        top: 0;
         left: 50%;
-        transform: translateX(-50%);
-        margin: 15px 0;
-        padding: 0 5px;
+        transform: translate(-50%, -50%);
         font-family: impact, sans-serif;
         font-size: 2em;
         text-transform: uppercase;
@@ -56,14 +83,10 @@ body{
 }
 
 .image-container--bottom-text{
-    position: absolute;
-    bottom: 0;
-    width: 80%;
-    text-align: center;
+    position:absolute;
+    bottom:5%;
     left: 50%;
-    transform: translateX(-50%);
-    margin: 15px 0;
-    padding: 0 5px;
+    transform: translate(-50%, -50%);
     font-family: impact, sans-serif;
     font-size: 2em;
     text-transform: uppercase;
@@ -84,4 +107,105 @@ body{
 
 .image{
     border-radius: 10px;
+    max-width: 100%;
+}
+
+.image-container{
+    position: relative;
+    text-align: center;
+    border: dashed black 10px;
+    border-radius: 10px;
+}
+
+/* saved memes component */
+
+
+.saved-memes--container{
+    position: relative;
+    margin: 50px;
+    border: solid rgb(0, 0, 0) 10px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.saved-memes--img{
+    border-radius: 10px;
+    max-width: max-content;
+}
+
+.saved-memes--top-text{
+    position:absolute;
+    top:0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: impact, sans-serif;
+    font-size: 2em;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow:
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        0 2px 0 #000,
+        2px 0 0 #000,
+        0 -2px 0 #000,
+        -2px 0 0 #000,
+        2px 2px 5px #000;
+}
+
+.saved-memes--bottom-text{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 15px 0;
+    padding: 0 5px;
+    font-family: impact, sans-serif;
+    font-size: 2em;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow:
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        0 2px 0 #000,
+        2px 0 0 #000,
+        0 -2px 0 #000,
+        -2px 0 0 #000,
+        2px 2px 5px #000;
+}
+.saved-memes--button-container{
+    display: flex;
+    justify-content: space-between;
+
+
+}
+.saved-memes--save-button{
+    font-family: sans-serif;
+    border-radius: 5px;
+    background: linear-gradient(90.41deg, #c83838 1.14%, #302f30 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: auto;
+    width: auto;
+    font-size: 20px;
+    margin-right:10px ;
+}
+
+.saved-memes--edit-button{
+    font-family: sans-serif;
+    border-radius: 5px;
+    background: linear-gradient(90.41deg, #c83838 1.14%, #302f30 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: auto;
+    width: auto;
+    font-size: 20px;
+   
 }

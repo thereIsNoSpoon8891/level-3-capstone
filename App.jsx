@@ -83,7 +83,7 @@ function App (){
                 />
                 <input
                     type="text"
-                    placeholder="Top text"
+                    placeholder="Bottom text"
                     className="form--input"
                     name="bottomText"
                     onChange={handleChange}
@@ -94,6 +94,9 @@ function App (){
 
             <div className='image-container'>
 
+                <h2 className='image-container--top-text'>
+                    {currentMeme.topText}
+                </h2>
                 <img 
                 name="imageUrl" 
                 className='image' 
@@ -101,9 +104,6 @@ function App (){
                 src={currentMeme.imageUrl}> 
                 </img>
 
-                <h2 className='image-container--top-text'>
-                    {currentMeme.topText}
-                </h2>
                 <h2 className='image-container--bottom-text'>
                     {currentMeme.bottomText}
                 </h2>
