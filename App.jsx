@@ -8,7 +8,7 @@ function App (){
     
     const [savedMemes, setSavedMemes] = useState([])// store saved memes
     
-    const [showEdit, setShowEdit] = useState(true)// edit button on/off
+    const [showEdit, setShowEdit] = useState(false)// edit button on/off
 
     const [currentMeme, setCurrentMeme] = useState({
         topText: "",
@@ -17,14 +17,12 @@ function App (){
         id: idGen()
     })
     
-
-
-    useEffect( () => {
-       fetch("https://api.imgflip.com/get_memes")
-        .then(res => res.json())
-        .then(allMemes => setMemeList(allMemes.data.memes))
-        .catch(error => console.log(error))
-    }, [])
+useEffect( () => {
+    fetch("https://api.imgflip.com/get_memes")
+    .then(res => res.json())
+    .then(allMemes => setMemeList(allMemes.data.memes))
+    .catch(error => console.log(error))
+}, [])
     
 function changeMeme (){
     const randomNumber = Math.floor(Math.random() * memesList.length)
@@ -43,6 +41,7 @@ function handleChange (e){
         [e.target.name]: e.target.value
     }))
 }
+
 function saveMeme (e){
     e.preventDefault()
     setSavedMemes(prevMemes => ([...prevMemes, {
@@ -55,7 +54,7 @@ function saveMeme (e){
 
 function handleDelete(id){
     const UpdateMemes = savedMemes.filter((meme) => meme.id !== id);
-    setSavedMemes(UpdateMemes);
+        setSavedMemes(UpdateMemes);
 
 }
 
@@ -85,53 +84,56 @@ function handleDelete(id){
                 className='next-button' 
                 onClick={changeMeme}
                 >
-                    Next meme image!
+                    Next Meme Image!
                 </button>
             </div>
 
             <form className='form' >
 
-                <input
-                    type="text"
-                    placeholder="Top text"
-                    className="form--input"
-                    name="topText"
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    placeholder="Bottom text"
-                    className="form--input"
-                    name="bottomText"
-                    onChange={handleChange}
-                />
-                <button 
-                className='save-button' 
-                onClick={saveMeme}>
-                    Save meme
-                </button>
+                    <input
+                        type="text"
+                        placeholder="Top text"
+                        className="form--input"
+                        name="topText"
+                        onChange={handleChange}
+                    />
 
-            <div className='image-container'>
+                    <input
+                        type="text"
+                        placeholder="Bottom text"
+                        className="form--input"
+                        name="bottomText"
+                        onChange={handleChange}
+                    />
 
-                <h2 className='image-container--top-text'>
-                    {currentMeme.topText}
-                </h2>
-                <img 
-                name="imageUrl" 
-                className='image' 
-                width="500px" 
-                src={currentMeme.imageUrl}
-                /> 
-                
+                    <button 
+                    className='save-button' 
+                    onClick={saveMeme}>
+                        Save Meme
+                    </button>
 
-                <h2 className='image-container--bottom-text'>
-                    {currentMeme.bottomText}
-                </h2>
-            </div>
+                <div className='image-container'>
+
+                    <h2 className='image-container--top-text'>
+                        {currentMeme.topText}
+                    </h2>
+
+                    <img 
+                    name="imageUrl" 
+                    className='image' 
+                    width="500px" 
+                    src={currentMeme.imageUrl}
+                    /> 
+                    
+                    <h2 className='image-container--bottom-text'>
+                        {currentMeme.bottomText}
+                    </h2>
+                </div>
 
             </form>
+
             <div className='app-saved-meme-containers'>
-            {savedMemesElements}
+                {savedMemesElements}
             </div>
         </div>
 

@@ -69,22 +69,22 @@ function showEditInputs (e){
                 <form>
                     {showEdit && 
                     <div className='saved-memes--inputs-container'>
-                        <input 
-                        type="text" 
-                        placeholder="Edit Top Text"
-                        className='saved-inputs' 
-                        onChange={handleEdit} 
-                        name="topText"
-                        />
+                            <input 
+                            type="text" 
+                            placeholder="Edit Top Text"
+                            className='saved-inputs' 
+                            onChange={handleEdit} 
+                            name="topText"
+                            />
 
-                        <input 
-                        type="text" 
-                        placeholder="Edit Bottom Text"
-                        className='saved-inputs'  
-                        onChange={handleEdit} 
-                        name="bottomText"
-                        />
-                    </div>}
+                            <input 
+                            type="text" 
+                            placeholder="Edit Bottom Text"
+                            className='saved-inputs'  
+                            onChange={handleEdit} 
+                            name="bottomText"
+                            />
+                        </div>}
                 </form>
             </div>
         </div>
