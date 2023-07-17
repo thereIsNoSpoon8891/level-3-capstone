@@ -123,8 +123,6 @@ body{
 .saved-memes--container{
     position: relative;
     margin: 50px;
-    border: solid rgb(0, 0, 0) 10px;
-    border-radius: 20px;
     text-align: center;
 }
 
@@ -180,9 +178,16 @@ body{
 }
 .saved-memes--button-container{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
 
 
+.saved-inputs{
+    font-family: sans-serif;
+    border-radius: 5px;
+    border: 1px solid #D5D4D8;
+    text-indent: 5px;
+    height: 30px;
 }
 .saved-memes--save-button{
     font-family: sans-serif;

@@ -1,7 +1,5 @@
 
-
 function SavedMemes (props){
-
 
 const {
     topText,
@@ -9,30 +7,37 @@ const {
     imageUrl,
     id,
     onDelete,
-    editedTopText,
-    editedBottomText,
-    onEditTopText,
-    onEditBottomText,
+    setSavedMemes,
+    savedMemes,
+    showEdit,
+    setShowEdit
   } = props;
 
-    function deleteMeme(){
-        onDelete(id);
-    }
+function deleteMeme(){
+    onDelete(id);
+}
 
-    function handleEdit(e){
-        e.preventDefault();
+function handleEdit(e){
+    e.preventDefault();
+        const {name, value} = e.target
+        const editedMemes = savedMemes.map(meme => meme.id === id ? {...meme, [name]: value} : meme)
+            setSavedMemes(editedMemes)
+}
 
-    }
+function showEditInputs (e){
+    e.preventDefault();
+        setShowEdit(prev => !prev)
+}
 
     return(
         <div className="saved-memes--container">
 
             <h2 className="saved-memes--top-text">
-            {editedTopText ? editedTopText : topText}
+                {topText}
             </h2>
 
             <h2 className="saved-memes--bottom-text">
-            {editedBottomText ? editedBottomText : bottomText}
+                {bottomText}
             </h2>
 
             <div 
@@ -41,8 +46,7 @@ const {
                 <img
                  className="saved-memes--img" 
                  width="500px" src={imageUrl} 
-                 alt="Meme"
-                 ></img>
+                 />
             </div>
 
             <div className="saved-memes--button-container">
@@ -56,25 +60,32 @@ const {
                 </button>
 
                 <button 
+                onClick={showEditInputs}
                 className="saved-memes--edit-button"
-                onClick={handleEdit}
                 >
-                    Edit this Meme
+                    {showEdit ? "Done" : "Edit this Meme"}
                 </button>
 
-                <input 
-                type="text" 
-                placeholder="Edit Top Text" 
-                value={editedTopText} 
-                onChange={onEditTopText} 
-                />
+                <form>
+                    {showEdit && 
+                    <div className='saved-memes--inputs-container'>
+                        <input 
+                        type="text" 
+                        placeholder="Edit Top Text"
+                        className='saved-inputs' 
+                        onChange={handleEdit} 
+                        name="topText"
+                        />
 
-                <input 
-                type="text" 
-                placeholder="Edit Bottom Text" 
-                value={editedBottomText} 
-                onChange={onEditBottomText} 
-                />
+                        <input 
+                        type="text" 
+                        placeholder="Edit Bottom Text"
+                        className='saved-inputs'  
+                        onChange={handleEdit} 
+                        name="bottomText"
+                        />
+                    </div>}
+                </form>
             </div>
         </div>
     )

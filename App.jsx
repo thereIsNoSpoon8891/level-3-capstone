@@ -6,6 +6,10 @@ import './style.css'
 function App (){
     const [memesList, setMemeList] = useState("")// holds all the memes 
     
+    const [savedMemes, setSavedMemes] = useState([])// store saved memes
+    
+    const [showEdit, setShowEdit] = useState(true)// edit button on/off
+
     const [currentMeme, setCurrentMeme] = useState({
         topText: "",
         bottomText: "",
@@ -13,9 +17,7 @@ function App (){
         id: idGen()
     })
     
-    const [savedMemes, setSavedMemes] = useState([])
-        // store saved memes
-    console.log(savedMemes)
+
 
     useEffect( () => {
        fetch("https://api.imgflip.com/get_memes")
@@ -24,51 +26,37 @@ function App (){
         .catch(error => console.log(error))
     }, [])
     
-    function changeMeme (){
-        const randomNumber = Math.floor(Math.random() * memesList.length)
+function changeMeme (){
+    const randomNumber = Math.floor(Math.random() * memesList.length)
 
-        const image = memesList[randomNumber].url
+    const image = memesList[randomNumber].url
 
-        setCurrentMeme(prevMeme => ({
-            ...prevMeme,
-            imageUrl: image
-        }))
-    }
-
-    function handleChange (e){
-        setCurrentMeme(prevMeme => ({
-            ...prevMeme,
-            [e.target.name]: e.target.value
-        }))
-    }
-
-    function saveMeme (e){
-        e.preventDefault()
-        setSavedMemes(prevMemes => ([...prevMemes, {
-            topText: currentMeme.topText,
-            bottomText: currentMeme.bottomText,
-            imageUrl: currentMeme.imageUrl,
-            id: idGen(),
-        }]))
-    }
-
-    function handleDelete(id){
-        const UpdateMemes = savedMemes.filter((meme) => meme.id !== id);
-        setSavedMemes(UpdateMemes);
-
-    }
-
-    // im creating a new state to  handle the  edits
-
-    const [editedTopText, setEditedTopText] = useState("");
-    const [editedBottomText, setEditedBottomText] = useState("");
-    
-    function handleEditTopText(e) {
-        setEditedTopText(e.target.value);
+    setCurrentMeme(prevMeme => ({
+        ...prevMeme,
+        imageUrl: image
+    }))
 }
 
-      function handleEditBottomText(e) {
-        setEditedBottomText(e.target.value);
+function handleChange (e){
+     setCurrentMeme(prevMeme => ({
+        ...prevMeme,
+        [e.target.name]: e.target.value
+    }))
+}
+function saveMeme (e){
+    e.preventDefault()
+    setSavedMemes(prevMemes => ([...prevMemes, {
+        topText: currentMeme.topText,
+        bottomText: currentMeme.bottomText,
+        imageUrl: currentMeme.imageUrl,
+        id: idGen(),
+    }]))
+}
+
+function handleDelete(id){
+    const UpdateMemes = savedMemes.filter((meme) => meme.id !== id);
+    setSavedMemes(UpdateMemes);
+
 }
 
     const savedMemesElements = savedMemes.map(meme => (
@@ -79,10 +67,10 @@ function App (){
                                                 id={meme.id}
                                                 key={meme.id}
                                                 onDelete={handleDelete}
-                                                editedTopText={editedTopText} 
-                                                editedBottomText={editedBottomText}
-                                                onEditTopText={handleEditTopText} 
-                                                onEditBottomText={handleEditBottomText}
+                                                setSavedMemes={setSavedMemes}
+                                                savedMemes={savedMemes}
+                                                showEdit={showEdit}
+                                                setShowEdit={setShowEdit}
                                                 />))
     return(
         <>
@@ -132,8 +120,9 @@ function App (){
                 name="imageUrl" 
                 className='image' 
                 width="500px" 
-                src={currentMeme.imageUrl}> 
-                </img>
+                src={currentMeme.imageUrl}
+                /> 
+                
 
                 <h2 className='image-container--bottom-text'>
                     {currentMeme.bottomText}
