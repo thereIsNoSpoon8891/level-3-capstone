@@ -62,14 +62,33 @@ function App (){
 
     const [editedTopText, setEditedTopText] = useState("");
     const [editedBottomText, setEditedBottomText] = useState("");
-    
+    const [editedMemeIndex, setEditedMemeIndex] = useState(-1);
+
+
     function handleEditTopText(e) {
         setEditedTopText(e.target.value);
-}
-
+        setSavedMemes((prevMemes) => {
+          const updatedMemes = [...prevMemes];
+          updatedMemes[editedMemeIndex].topText = e.target.value;
+          return updatedMemes;
+        });
+      }
+      
       function handleEditBottomText(e) {
         setEditedBottomText(e.target.value);
+        setSavedMemes((prevMemes) => {
+          const updatedMemes = [...prevMemes];
+          updatedMemes[editedMemeIndex].bottomText = e.target.value;
+          return updatedMemes;
+        });
+      }
+      
+function handleEdit(id) {
+  const index = savedMemes.findIndex((meme) => meme.id === id);
+  setEditedMemeIndex(index);
 }
+
+  
 
     const savedMemesElements = savedMemes.map(meme => (
                                                 <SavedMemes 
@@ -83,6 +102,7 @@ function App (){
                                                 editedBottomText={editedBottomText}
                                                 onEditTopText={handleEditTopText} 
                                                 onEditBottomText={handleEditBottomText}
+                                                onEdit={handleEdit}
                                                 />))
     return(
         <>
