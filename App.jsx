@@ -8,14 +8,14 @@ function App (){
     
     const [savedMemes, setSavedMemes] = useState([])// store saved memes
     
-    const [showEdit, setShowEdit] = useState(false)// edit button on/off
 
-    const [currentMeme, setCurrentMeme] = useState({
+    const initValues = {
         topText: "",
         bottomText: "",
         imageUrl: "https://i.imgflip.com/33e92f.jpg",// initial image
         id: idGen()
-    })
+    }
+    const [currentMeme, setCurrentMeme] = useState(initValues)
     
 useEffect( () => {
     fetch("https://api.imgflip.com/get_memes")
@@ -50,6 +50,7 @@ function saveMeme (e){
         imageUrl: currentMeme.imageUrl,
         id: idGen(),
     }]))
+    setCurrentMeme(initValues)
 }
 
 function handleDelete(id){
@@ -68,8 +69,6 @@ function handleDelete(id){
                                                 onDelete={handleDelete}
                                                 setSavedMemes={setSavedMemes}
                                                 savedMemes={savedMemes}
-                                                showEdit={showEdit}
-                                                setShowEdit={setShowEdit}
                                                 />))
     return(
         <>
@@ -96,6 +95,7 @@ function handleDelete(id){
                         className="form--input"
                         name="topText"
                         onChange={handleChange}
+                        value={currentMeme.topText}
                     />
 
                     <input
@@ -104,6 +104,7 @@ function handleDelete(id){
                         className="form--input"
                         name="bottomText"
                         onChange={handleChange}
+                        value={currentMeme.bottomText}
                     />
 
                     <button 

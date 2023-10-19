@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 
 function SavedMemes (props){
 
@@ -9,9 +11,9 @@ const {
     onDelete,
     setSavedMemes,
     savedMemes,
-    showEdit,
-    setShowEdit
-  } = props;
+  } = props
+
+  const [showEdit, setShowEdit] = useState(false)// edit button on/off
 
 function deleteMeme(){
     onDelete(id);
@@ -25,8 +27,8 @@ function handleEdit(e){
 }
 
 function showEditInputs (e){
-    e.preventDefault();
-        setShowEdit(prev => !prev)
+    // e.preventDefault();
+        setShowEdit(prev =>  !prev )
 }
 
     return(
@@ -75,6 +77,7 @@ function showEditInputs (e){
                             className='saved-inputs' 
                             onChange={handleEdit} 
                             name="topText"
+                            value={topText}
                             />
 
                             <input 
@@ -83,6 +86,7 @@ function showEditInputs (e){
                             className='saved-inputs'  
                             onChange={handleEdit} 
                             name="bottomText"
+                            value={bottomText}
                             />
                         </div>}
                 </form>
